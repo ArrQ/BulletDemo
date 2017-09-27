@@ -140,8 +140,7 @@
     BulletView *view = [[BulletView alloc]initWithComment:comment];
 
     view.trajectory = trajectory;
-    
-    
+
     [self.bulletViews addObject:view];
     
     
@@ -150,10 +149,8 @@
     __weak typeof (self) weakSelf =self;
     view.moveStatusBlock = ^{
        
-        
 //        弹幕销毁
         [weakView stopAnimation];
-        
         
         [weakSelf.bulletViews removeObject:weakView];
         

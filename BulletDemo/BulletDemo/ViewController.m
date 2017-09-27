@@ -25,11 +25,21 @@
 
     self.manager = [[BulletManager alloc]init];
     
-    __weak typeof (self) weakSelf =self;
+    __weak typeof (self) weakSelf = self;
     
-self.manager.generateViewBlock = ^(BulletView *view) {
+    self.manager.generateViewBlock = ^(BulletView *view) {
   
-    [weakSelf addBulletView:view];
+        
+        CGFloat width = [UIScreen mainScreen].bounds.size.width;
+        
+        view.frame = CGRectMake(width, 300 + view.trajectory *40, CGRectGetWidth(view.bounds), CGRectGetHeight(view.bounds));
+        
+        [weakSelf.view addSubview:view];
+        
+        
+        [view startAnimation];
+        
+//    [weakSelf addBulletView:view];
     
     
 };
@@ -89,7 +99,7 @@ self.manager.generateViewBlock = ^(BulletView *view) {
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
 }
 
 
